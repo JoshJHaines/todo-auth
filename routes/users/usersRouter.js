@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const { createUser } = require("./controller/userController");
+const { createUser, deleteUserById } = require("./controller/userController");
 
 /*******************
  * MAIN USERS PAGE *
@@ -23,5 +23,10 @@ router.post(
 	// validateCreateData,
 	createUser
 );
+
+/*********************
+ * DELETE USERS PAGE *
+ *********************/
+ router.delete("/delete-user-by-id/:id", deleteUserById);
 
 module.exports = router;
