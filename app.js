@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
@@ -8,16 +10,17 @@ var usersRouter = require("./routes/users/usersRouter");
 
 var app = express();
 
-mongoose.connect("mongodb://localhost:27017/todo-auth",{
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log("MONGODB CONNECTED")
-})
-.catch(() => {
-  console.log("NOTTTTTT connecting to MongoDB")
-})
+mongoose
+	.connect(process.env.MONGO_DB, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => {
+		console.log("MONGODB CONNECTED");
+	})
+	.catch(() => {
+		console.log(e);
+	});
 
 
 app.use(logger('combined'));
