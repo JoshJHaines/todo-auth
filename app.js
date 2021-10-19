@@ -8,7 +8,7 @@ var usersRouter = require("./routes/users/usersRouter");
 
 var app = express();
 
-mongoose.connect(process.env.MONGO_DB,{
+mongoose.connect("mongodb://localhost:27017/todo-auth",{
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_DB,{
   console.log("MONGODB CONNECTED")
 })
 .catch(() => {
-  // console.log(e)
+  console.log("NOTTTTTT connecting to MongoDB")
 })
 
 
