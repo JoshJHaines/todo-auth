@@ -2,6 +2,9 @@ const bcrypt = require("bcryptjs");
 const validator = require("validator");
 const User = require("../model/Users");
 
+/*******************
+ * ASYNC FUNCTIONS *
+ *******************/
 async function createUser(req, res) {
 	const { firstName, lastName, username, email, password } = req.body;
 
@@ -37,7 +40,10 @@ async function deleteUserById(req, res) {
 	}
 }
 
+/****************************
+ * EXPORT FOR USE IN ROUTER *
+ ****************************/
 module.exports = {
-    createUser,
-    deleteUserById
+	createUser,
+	deleteUserById,
 };
