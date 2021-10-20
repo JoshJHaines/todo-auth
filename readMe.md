@@ -16,9 +16,9 @@ Over the weekend, remake the whole auth backend for a CRU(Create, Read, Update)T
   - [ ] JWT token is passed (L-Auth-backend-Json Web Token 49:10)
 - [ ] User will be able to make a todo list once signed it. Each todo is connected to the user and only that user will be able to see those todos.
   - [ ] Create new model
-- [ ] User collection will have date, firstName, lastName, username, email, password and todos.
+- [x] User collection will have date, firstName, lastName, username, email, password and todos.
 - [ ] Todo collection will have date, todo, done, and user.
-- [ ] Create Middlewares, include validator
+- [x] Create Middlewares, include validator
 - [ ] Have a router, model and controller for user and todo
   - [x] MVC User
   - [ ] MVC Todo
