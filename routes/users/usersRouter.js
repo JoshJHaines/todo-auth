@@ -1,18 +1,23 @@
 var express = require("express");
 var router = express.Router();
 /************************************
- * IMPORT FUNCTIONS FROM CONTROLLER *
+ * IMPORT MIDDLEWARE FROM CONTROLLER *
  ************************************/
-const { createUser, deleteUserById } = require("./controller/userController");
+const {
+	createUser,
+	deleteUserById,
+	// login,
+} = require("./controller/userController");
 
-/****************************
- * IMPORT FUNTIONS FROM LIB *
- ****************************/
-const { validateCreateUser, validateLoginData } = require("./lib")
+/*****************************
+ * IMPORT MIDDLEWARE FROM LIB *
+ *****************************/
+const { validateCreateUser, validateLoginData } = require("./lib");
+
 /******************************
  * CRUD ROUTES WITH FUNCTIONS *
+ * VVVVVVVVVVVVVVVVVVVVVVVVVV *
  ******************************/
-
 /*******************
  * MAIN USERS PAGE *
  *******************/
@@ -39,6 +44,16 @@ router.post(
  *********************/
 router.delete("/delete-user-by-id/:id", deleteUserById);
 
+/**************
+ * LOGIN USER *
+ **************/
+// router.post(
+// 	"/login",
+// 	// checkIsUndefined,
+// 	// checkIsEmpty,
+// 	validateLoginData,
+// 	login
+// );
 /**************************************
  * EXPORT ROUTER TO BE USED ELSEWHERE *
  **************************************/
