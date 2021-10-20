@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
-const User = require("../model/Users");
+const Users = require("../model/Users");
 
 /*******************
  * ASYNC FUNCTIONS *
@@ -12,7 +12,7 @@ async function createUser(req, res) {
 		let salt = await bcrypt.genSalt(10);
 		let hashedPassword = await bcrypt.hash(password, salt);
 
-		const createdUser = new User({
+		const createdUser = new Users({
 			firstName,
 			lastName,
 			username,
@@ -35,6 +35,7 @@ async function deleteUserById(req, res) {
 	} catch (error) {
 		res.status(500).json({
 			message: "you have failed",
+			searchedId: req.params.id,
 			error: error.message,
 		});
 	}
