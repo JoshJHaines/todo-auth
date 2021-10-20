@@ -6,7 +6,7 @@ var router = express.Router();
 const {
 	createUser,
 	deleteUserById,
-	// login,
+	login,
 } = require("./controller/userController");
 
 /*****************************
@@ -47,13 +47,13 @@ router.delete("/delete-user-by-id/:id", deleteUserById);
 /**************
  * LOGIN USER *
  **************/
-// router.post(
-// 	"/login",
-// 	// checkIsUndefined,
-// 	// checkIsEmpty,
-// 	validateLoginData,
-// 	login
-// );
+router.post(
+	"/login",
+	// checkIsUndefined,
+	// checkIsEmpty,
+	// validateLoginData,
+	login
+);
 /**************************************
  * EXPORT ROUTER TO BE USED ELSEWHERE *
  **************************************/
