@@ -13,7 +13,7 @@ var mongoose = require("mongoose");
 /**************************
  * CONNECT APP TO ROUTERS *
  **************************/
-var indexRouter = require("./routes/index");
+var indexRouter = require("./routes/main/index");
 var usersRouter = require("./routes/users/usersRouter");
 /***********************
  * CONNECT TO DATABASE *
@@ -41,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 /****************************************
- * HAVE APP USE ROUTERS WITH BASEROUTES *
+ * HAVE APP USE ROUTERS WITH BASE ROUTES *
  ****************************************/
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
