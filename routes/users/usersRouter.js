@@ -4,6 +4,11 @@ var router = express.Router();
  * IMPORT FUNCTIONS FROM CONTROLLER *
  ************************************/
 const { createUser, deleteUserById } = require("./controller/userController");
+
+/****************************
+ * IMPORT FUNTIONS FROM LIB *
+ ****************************/
+const { validateCreateUser, validateLoginData } = require("./lib")
 /******************************
  * CRUD ROUTES WITH FUNCTIONS *
  ******************************/
@@ -25,7 +30,7 @@ router.post(
 	"/create-user",
 	// checkIsUndefined,
 	// checkIsEmpty,
-	// validateCreateData,
+	validateCreateUser,
 	createUser
 );
 
