@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
 		password: {
 			type: String,
 		},
-		todo: [{ type: mongoose.Schema.ObjectId, ref: "todo" }],
+		todos: [{ type: mongoose.Schema.ObjectId, ref: "todo" }],
 	},
 	{
 		timestamps: true,
