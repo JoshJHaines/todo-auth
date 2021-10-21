@@ -14,14 +14,14 @@ Over the weekend, remake the whole auth backend for a CRU(Create, Read, Update)T
     - [x] saves to db
   - [x] Login
   - [x] JWT token is passed
-- [ ] User will be able to make a todo list once signed it. Each todo is connected to the user and only that user will be able to see those todos.
+- [x] User will be able to make a todo list once signed it. Each todo is connected to the user and only that user will be able to see those todos.
   - [x] Create new model
 - [x] User collection will have date, firstName, lastName, username, email, password and todos.
 - [x] Todo collection will have date, todo, done, and user.
 - [x] Create Middlewares, include validator
-- [ ] Have a router, model and controller for user and todo
+- [/] Have a router, model and controller for user and todo
   - [x] MVC User
-  - [ ] MVC Todo
+  - [/] MVC Todo
 - [x] Use MongoDB, mongoose, bcryptjs, JWT
   - [x] MongoDB
   - [x] Mongoose
