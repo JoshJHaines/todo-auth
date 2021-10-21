@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken")
 var express = require("express");
 var router = express.Router();
 /************************************
@@ -17,6 +18,7 @@ const {
 	validateLoginData,
 	checkIsUndefined,
 	checkIsEmpty,
+	jwtMiddleware
 } = require("./lib");
 
 /******************************
@@ -66,9 +68,7 @@ router.post(
 
 router.post(
 	"/profile",
-	function (req, res) {
-		res.json({ token: req.body.token})
-	}
+	jwtMiddleware
 )
 /**************************************
  * EXPORT ROUTER TO BE USED ELSEWHERE *
