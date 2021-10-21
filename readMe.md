@@ -13,7 +13,7 @@ Over the weekend, remake the whole auth backend for a CRU(Create, Read, Update)T
     - [x] middleware for validation
     - [x] saves to db
   - [x] Login
-  - [x] JWT token is passed (L-Auth-backend-Json Web Token 49:10)
+  - [x] JWT token is passed
 - [ ] User will be able to make a todo list once signed it. Each todo is connected to the user and only that user will be able to see those todos.
   - [x] Create new model
 - [x] User collection will have date, firstName, lastName, username, email, password and todos.
