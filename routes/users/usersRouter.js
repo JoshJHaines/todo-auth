@@ -12,7 +12,12 @@ const {
 /*****************************
  * IMPORT MIDDLEWARE FROM LIB *
  *****************************/
-const { validateCreateUser, validateLoginData, checkIsUndefined } = require("./lib");
+const {
+	validateCreateUser,
+	validateLoginData,
+	checkIsUndefined,
+	checkIsEmpty,
+} = require("./lib");
 
 /******************************
  * CRUD ROUTES WITH FUNCTIONS *
@@ -34,7 +39,7 @@ router.get("/", function (req, res, next) {
 router.post(
 	"/create-user",
 	checkIsUndefined,
-	// checkIsEmpty,
+	checkIsEmpty,
 	validateCreateUser,
 	createUser
 );
