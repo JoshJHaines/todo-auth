@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../model/Users");
+const errorHandler = require("../../utils/errorHandler/errorHandler")
 
 /*******************
  * ASYNC FUNCTIONS *
@@ -24,7 +25,7 @@ async function createUser(req, res) {
 
 		res.json({ message: "success", payload: savedUser });
 	} catch (error) {
-		res.status(500).json({ message: "error", error: error.message });
+		res.status(500).json({ message: "Well, That did NOT work!!!", error: errorHandler(error) });
 	}
 }
 async function deleteUserById(req, res) {
