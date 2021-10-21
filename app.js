@@ -15,6 +15,7 @@ var mongoose = require("mongoose");
  **************************/
 var indexRouter = require("./routes/main/index");
 var usersRouter = require("./routes/users/usersRouter");
+var todoRouter = require("./routes/todo/todoRouter");
 /***********************
  * CONNECT TO DATABASE *
  ***********************/
@@ -45,6 +46,7 @@ app.use(cookieParser());
  ****************************************/
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/todo", todoRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
