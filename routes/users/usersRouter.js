@@ -59,6 +59,17 @@ router.post(
 	validateLoginData,
 	login
 );
+
+/*************************
+ * USER PROFILE WITH JWT *
+ *************************/
+
+router.post(
+	"/profile",
+	function (req, res) {
+		res.json({ token: req.body.token})
+	}
+)
 /**************************************
  * EXPORT ROUTER TO BE USED ELSEWHERE *
  **************************************/
