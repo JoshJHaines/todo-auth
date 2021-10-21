@@ -40,6 +40,9 @@ router.post("/create-todo", jwtMiddleware, async function (req, res) {
 			});
 
 			let savedTodo = await createdTodo.save();
+
+			foundUser.todos.push(savedTodo._id)
+			await foundUser.save()
 			res.json({
 				message: "SUCCESS",
 				Todo: savedTodo,
