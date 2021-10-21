@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const validator = require("validator");
+const jwt = require("jsonwebtoken");
 const Users = require("../model/Users");
 
 /*******************
@@ -42,10 +42,6 @@ async function deleteUserById(req, res) {
 }
 async function login(req, res) {
 	const { email, password } = req.body;
-	//log the user in using email and password
-	//if email does not exists, error message "please go sign up"
-	//if email exists but wrong password error message "please check your email and password"
-	//if successful - for now send message "Login success"
 
 	try {
 		let foundUser = await Users.findOne({ email: email });
@@ -66,16 +62,20 @@ async function login(req, res) {
 					error: "Please check your email and password",
 				});
 			} else {
-				// let jwtToken = jwt.sign(
-				// 	{
-				// 		email: foundUser.email,
-				// 		username: foundUser.username,
-				// 	},
-				// 	process.env.JWT_SECRET,
-				// 	{ expiresIn: "24h" }
-				// );
+				let jwtToken = jwt.sign(
+					{
+						email: foundUser.email,
+						username: foundUser.username,
+					},
+					process.env.JWT_SECRET,
+					{ expiresIn: "24h" }
+				);
 
-				res.json({ message: "success", payload: foundUser });
+				res.json({
+					message: "success",
+					payload: { JWT: jwtToken },
+					User: foundUser,
+				});
 			}
 		}
 	} catch (e) {
