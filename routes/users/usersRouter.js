@@ -54,9 +54,9 @@ router.delete("/delete-user-by-id/:id", deleteUserById);
  **************/
 router.post(
 	"/login",
-	// checkIsUndefined,
-	// checkIsEmpty,
-	// validateLoginData,
+	checkIsUndefined,
+	checkIsEmpty,
+	validateLoginData,
 	login
 );
 /**************************************
