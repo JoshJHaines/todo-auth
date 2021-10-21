@@ -3,17 +3,17 @@ const mongoose = require("mongoose");
 const TodoSchema = new mongoose.Schema(
 	{
 		todo: {
-			type: String,
-		},
-		todoDetails: {
-			type: String,
+            type: String,
+            required: true
 		},
 		todoOwner: {
 			type: mongoose.Schema.ObjectId,
-			ref: "user",
+            ref: "user",
+            required: true
 		},
 		done: {
-			type: Boolean,
+            type: Boolean,
+            default: false
 		},
 	},
 	{
