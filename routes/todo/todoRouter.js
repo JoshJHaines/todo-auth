@@ -5,6 +5,7 @@ var { jwtMiddleware } = require("../users/lib/shared/jwtMiddleware");
 
 const Todo = require("./model/Todo");
 const Users = require("../users/model/Users");
+const errorHandler = require("../utils/errorHandler/errorHandler");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -14,7 +15,7 @@ router.get("/", function (req, res, next) {
 	});
 });
 
-router.post("/create-todo", jwtMiddleware, function (req, res) {
+router.post("/create-todo", jwtMiddleware, async function (req, res) {
 	try {
 		const { todo, todoOwner, done } = req.body;
 
@@ -29,14 +30,28 @@ router.post("/create-todo", jwtMiddleware, function (req, res) {
 				error: errObj,
 			});
 		} else {
+			const decodedData = res.locals.decodedData;
+			
+			let foundUser = await Users.findOne({ email: decodedData.email });
+			
+			const createdTodo = new Todo({
+				todo: req.body.todo,
+				todoOwner: foundUser._id,
+			});
+
+			let savedTodo = await createdTodo.save();
 			res.json({
 				message: "SUCCESS",
-				page: "you didn't get an error",
+				Todo: savedTodo,
+				User: foundUser
 			});
 		}
-
-		const createdTodo = new Todo({ todo: "", todoOwner: "" });
-	} catch (e) {}
+	} catch (e) {
+		res.status(500).json({
+			message: "You didn't do it right",
+			error: errorHandler(e),
+		});
+	}
 });
 
 module.exports = router;
