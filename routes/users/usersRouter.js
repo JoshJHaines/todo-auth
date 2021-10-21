@@ -8,6 +8,7 @@ const {
 	createUser,
 	deleteUserById,
 	login,
+	// updateUser
 } = require("./controller/userController");
 
 /*****************************
@@ -16,6 +17,7 @@ const {
 const {
 	validateCreateUser,
 	validateLoginData,
+	validateUpdateData,
 	checkIsUndefined,
 	checkIsEmpty,
 	jwtMiddleware
@@ -68,7 +70,11 @@ router.post(
 
 router.post(
 	"/profile",
-	jwtMiddleware
+	jwtMiddleware,
+	checkIsUndefined,
+	checkIsEmpty,
+	validateUpdateData,
+	// updateUser
 )
 /**************************************
  * EXPORT ROUTER TO BE USED ELSEWHERE *
