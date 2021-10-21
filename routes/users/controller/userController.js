@@ -73,10 +73,8 @@ async function login(req, res) {
 
 				res.json({
 					message: "success",
-					//* gen would not need to be an object
-					payload: { JWT: jwtToken },
-					//! only adding this for learning to see who was found. Would not want to expose in real app.
-					User: foundUser,
+					payload: { JWT: jwtToken }, //* gen would not need to be an object
+					User: foundUser, //! only adding this for learning to see who was found. Would not want to expose in real app.
 				});
 			}
 		}
