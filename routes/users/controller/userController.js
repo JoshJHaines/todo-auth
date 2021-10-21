@@ -82,6 +82,31 @@ async function login(req, res) {
 		res.status(500).json({ message: "error", error: e.message });
 	}
 }
+async function updateUser(req, res) {
+	try {
+		const { password } = req.body;
+
+		const decodedData = res.locals.decodedData;
+
+		let salt = await bcrypt.genSalt(10);
+		let hashedPassword = await bcrypt.hash(password, salt);
+
+		req.body.password = hashedPassword;
+
+		let updatedUser = await Users.findOneAndUpdate(
+			{ email: decodedData.email },
+			req.body,
+			{ new: true }
+		);
+
+		res.json({
+			message: "success",
+			payload: updatedUser,
+		});
+	} catch (e) {
+		res.status(500).json({ message: "error", error: e.message });
+	}
+}
 
 /****************************
  * EXPORT FOR USE IN ROUTER *
@@ -90,4 +115,5 @@ module.exports = {
 	createUser,
 	deleteUserById,
 	login,
+	updateUser,
 };

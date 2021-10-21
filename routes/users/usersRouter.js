@@ -8,7 +8,7 @@ const {
 	createUser,
 	deleteUserById,
 	login,
-	// updateUser
+	updateUser
 } = require("./controller/userController");
 
 /*****************************
@@ -68,13 +68,13 @@ router.post(
  * USER PROFILE WITH JWT *
  *************************/
 
-router.post(
+router.put(
 	"/profile",
 	jwtMiddleware,
 	checkIsUndefined,
 	checkIsEmpty,
 	validateUpdateData,
-	// updateUser
+	updateUser
 )
 /**************************************
  * EXPORT ROUTER TO BE USED ELSEWHERE *
